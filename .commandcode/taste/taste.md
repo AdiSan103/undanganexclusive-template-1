@@ -1,0 +1,2 @@
+- Prefers `.yml` extension for YAML files (not `.yaml`). Confidence: 0.9
+- Communicates in Bahasa Indonesia. Confidence: 0.7

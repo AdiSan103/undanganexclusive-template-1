@@ -1,0 +1,31 @@
+name: 🌙 Pasukan Malam (Knowledge Base Builder)
+
+on:
+  schedule:
+    # Berjalan jam 18.00 WITA (10.00 UTC) pada tanggal 23 Juli
+    - cron: '0 10 23 7 *'
+  workflow_dispatch: 
+
+jobs:
+  night-shift-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Tarik Repository
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup Environment 
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.12.2'
+
+      - name: 🤖 Bangunkan commandcode.ai (Membaca Knowledge Base)
+        env:
+          COMMANDCODE_API_KEY: ${{ secrets.COMMANDCODE_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npm install -g commandcode.ai
+          
+          # Perintahkan AI untuk membaca file knowledge-base.md sebagai acuan utama
+          # dan langsung membuat Pull Request setelah selesai merakit kodenya
+          commandcode run "Tolong baca dan analisis file knowledge-base.md. Bangun struktur proyek dan tulis kodenya dari awal sesuai dengan spesifikasi, fitur, dan tech stack yang ada di dokumen tersebut." --auto-commit --create-pr
