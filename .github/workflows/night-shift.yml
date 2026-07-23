@@ -26,9 +26,10 @@ jobs:
         run: |
           npm install -g command-code
 
-          # Perintahkan AI untuk membaca file knowledge-base.md sebagai acuan utama
-          # --auto-accept agar AI langsung menulis file tanpa prompt konfirmasi
-          cmdc --auto-accept "Tolong baca dan analisis file knowledge-base.md. Bangun struktur proyek dan tulis kodenya dari awal sesuai dengan spesifikasi, fitur, dan tech stack yang ada di dokumen tersebut."
+          # script menyediakan pseudo-TTY untuk cmdc (butuh di CI karena cmdc hanya
+          # mendukung input interaktif, tidak ada flag --no-interactive / --ci / --headless)
+          # --auto-accept untuk skip semua prompt konfirmasi
+          script -q -c 'cmdc --auto-accept "Tolong baca dan analisis file knowledge-base.md. Bangun struktur proyek dan tulis kodenya dari awal sesuai dengan spesifikasi, fitur, dan tech stack yang ada di dokumen tersebut."' /dev/null
 
       - name: 📦 Commit & Push Perubahan
         run: |
