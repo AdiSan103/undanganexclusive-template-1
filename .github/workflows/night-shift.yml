@@ -19,13 +19,13 @@ jobs:
         with:
           node-version: '20.12.2'
 
-      - name: 🤖 Bangunkan commandcode.ai (Membaca Knowledge Base)
+      - name: 🤖 Bangunkan cmdc (Membaca Knowledge Base)
         env:
           COMMANDCODE_API_KEY: ${{ secrets.COMMANDCODE_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npm install -g commandcode.ai
-          
+          npm install -g command-code
+
           # Perintahkan AI untuk membaca file knowledge-base.md sebagai acuan utama
           # dan langsung membuat Pull Request setelah selesai merakit kodenya
-          commandcode run "Tolong baca dan analisis file knowledge-base.md. Bangun struktur proyek dan tulis kodenya dari awal sesuai dengan spesifikasi, fitur, dan tech stack yang ada di dokumen tersebut." --auto-commit --create-pr
+          cmdc -p "Tolong baca dan analisis file knowledge-base.md. Bangun struktur proyek dan tulis kodenya dari awal sesuai dengan spesifikasi, fitur, dan tech stack yang ada di dokumen tersebut."
