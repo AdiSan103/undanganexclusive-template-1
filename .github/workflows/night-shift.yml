@@ -21,7 +21,7 @@ jobs:
 
       - name: 🤖 Bangunkan cmdc (Membaca Knowledge Base)
         env:
-          COMMANDCODE_API_KEY: ${{ secrets.COMMANDCODE_API_KEY }}
+          COMMAND_CODE_API_KEY: ${{ secrets.COMMAND_CODE_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           npm install -g command-code
