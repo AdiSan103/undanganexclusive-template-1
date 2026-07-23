@@ -1,2 +1,3 @@
 - Prefers `.yml` extension for YAML files (not `.yaml`). Confidence: 0.9
 - Communicates in Bahasa Indonesia. Confidence: 0.7
+- Prefers clean, semantic commit messages using conventional commits style (e.g., `feat:`, `fix:` prefix, body, trailers). Confidence: 0.8
